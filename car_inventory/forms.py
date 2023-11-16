@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm 
-from wtforms import StringField, PasswordField, IntegerField, DecimalField, SubmitField 
+from wtforms import StringField, PasswordField, DecimalField, SubmitField 
 from wtforms.validators import DataRequired, Email, EqualTo
 
 #creating our login & register forms 
@@ -17,3 +17,12 @@ class RegisterForm(FlaskForm):
     password = PasswordField('Password', validators = [ DataRequired()])
     confirm_password = PasswordField('Confirm Password', validators=[ DataRequired(), EqualTo('password')])
     submit = SubmitField('Sign Up')
+
+
+class ProductForm(FlaskForm):
+    name = StringField('Vehicle Name', validators=[ DataRequired() ] )
+    image = StringField('Img url **Optional')
+    description = StringField('Description **Optional')
+    price = DecimalField('Price', validators=[ DataRequired() ])
+    # quantity = IntegerField('Quantity', validators=[ DataRequired() ])
+    submit = SubmitField('Submit')
